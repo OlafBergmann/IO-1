@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace I_O
+namespace I_O_ZAD5
 {
     class Program
     {
@@ -22,7 +22,7 @@ namespace I_O
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Podaj wielkoœæ tablicy: ");
+            Console.WriteLine("Podaj wielkosc tablicy: ");
             tabLength = Convert.ToInt32(Console.ReadLine());
             takenIndex = new List<int>();
 
@@ -32,25 +32,20 @@ namespace I_O
             fillRandom();
             printTable();
 
-            Console.WriteLine("Podaj ile liczb ma byæ zsumowanych: ");
+            Console.WriteLine("Podaj ile liczb ma byÃ¦ zsumowanych: ");
             sumNumber = Convert.ToInt32(Console.ReadLine());
 
             if (sumNumber >= tabLength)
             {
-                Console.WriteLine("Liczba musi byæ mniejsza od rozmiaru tablicy.");
+                Console.WriteLine("Liczba musi byc mniejsza od rozmiaru tablicy.");
             }
             else
             {
-                //are = new List<AutoResetEvent>();
-                //are = new AutoResetEvent(true);
                 for (int i = 0; i < sumNumber; i++)
                 {
-                    //var tempAre = new AutoResetEvent(false);
-                    //are.Add(tempAre);
                     ThreadPool.QueueUserWorkItem(new WaitCallback(SumNumbers));
                     Thread.Sleep(200);
                 }
-                //WaitHandle.WaitAll(are.ToArray());
 
             }
             Console.WriteLine("Suma: " + sum);
@@ -84,12 +79,7 @@ namespace I_O
                 int index = sRnd.Next(1, tabLength - 1);
                 sum += numbers[index];
                 Console.WriteLine("Indeks, tab {0}, {1}", index, numbers[index]);
-            }
-            
-            //AutoResetEvent sumAre = (AutoResetEvent) obj;
-            //sumAre.Set();
-
-            
+            }  
         }
     }
 }
